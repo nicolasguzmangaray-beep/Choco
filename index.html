@@ -1,0 +1,537 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Anchor, 
+  Leaf, 
+  Users, 
+  ShieldCheck, 
+  BarChart3, 
+  ArrowRight, 
+  Globe, 
+  Zap, 
+  TreePine,
+  Ship,
+  Map,
+  CheckCircle2,
+  AlertTriangle,
+  Menu,
+  X,
+  Target,
+  Briefcase,
+  Scale,
+  Compass,
+  ChevronRight,
+  FileText,
+  MessageSquare,
+  Cpu,
+  History,
+  TrendingUp,
+  Landmark,
+  Droplets,
+  HardHat
+} from 'lucide-react';
+
+const BigLogo = ({ className = "w-32 h-32" }) => (
+  <div className={`relative ${className} group`}>
+    <svg viewBox="0 0 100 100" className="w-full h-full transform group-hover:scale-105 transition-all duration-700">
+      <defs>
+        <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: '#059669', stopOpacity: 1 }} />
+          <stop offset="100%" style={{ stopColor: '#1d4ed8', stopOpacity: 1 }} />
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="48" fill="white" stroke="#f1f5f9" strokeWidth="1" />
+      <path d="M20,50 Q50,10 80,50 Q50,90 20,50" fill="none" stroke="url(#brandGrad)" strokeWidth="8" strokeLinecap="round" />
+      <path d="M20,60 Q50,40 80,60" fill="none" stroke="#3b82f6" strokeWidth="4" strokeLinecap="round" opacity="0.4" />
+      <circle cx="50" cy="50" r="12" fill="url(#brandGrad)" />
+    </svg>
+  </div>
+);
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState('social');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
+      
+      {/* --- NAVEGACIÓN --- */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-8'}`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <BigLogo className="w-10 h-10" />
+            <span className="font-black text-xl tracking-tighter uppercase">Bio-Conecta Chocó</span>
+          </div>
+          <div className="hidden lg:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+            <a href="#genesis" className="hover:text-emerald-600 transition-colors">Génesis</a>
+            <a href="#proposito" className="hover:text-emerald-600 transition-colors">Propósito</a>
+            <a href="#modelo" className="hover:text-emerald-600 transition-colors">Modelo</a>
+            <a href="#valor" className="hover:text-emerald-600 transition-colors">Valor</a>
+            <a href="#riesgos" className="hover:text-emerald-600 transition-colors">Riesgos</a>
+          </div>
+          <button className="bg-slate-900 text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-blue-700 transition-all">
+            Involucrarse
+          </button>
+        </div>
+      </nav>
+
+      {/* --- HERO --- */}
+      <section className="relative pt-40 pb-20 lg:pt-56 lg:pb-40 overflow-hidden bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-10 relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-2xl border border-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest">
+              <Zap size={14} /> Proyecto de Transformación Nacional
+            </div>
+            <BigLogo className="w-40 h-40 lg:w-56 lg:h-56 shadow-2xl rounded-full bg-white p-2" />
+            <h1 className="text-7xl lg:text-9xl font-black text-slate-900 leading-[0.85] tracking-tighter">
+              BIO-CONECTA <br/><span className="text-emerald-600 italic underline decoration-blue-500/20 underline-offset-8">CHOCÓ</span>
+            </h1>
+            <p className="text-2xl lg:text-3xl font-medium text-slate-500 italic max-w-xl">
+              "Conectando Océanos, Transformando Vidas"
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="bg-slate-900 text-white px-10 py-6 rounded-3xl font-black text-lg flex items-center gap-3 hover:scale-105 transition-all shadow-2xl shadow-slate-200">
+                Ver Propuesta Completa <ChevronRight />
+              </button>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl relative">
+              <img 
+                src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=1000&auto=format&fit=crop" 
+                alt="Chocó River View" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+              <div className="absolute bottom-12 left-12 right-12 text-white">
+                <p className="text-sm font-black uppercase tracking-[0.3em] mb-2 opacity-80">Ubicación Estratégica</p>
+                <h3 className="text-4xl font-bold leading-tight">El Nuevo Centro Logístico del Continente</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SECCIÓN GÉNESIS (La imagen original) --- */}
+      <section id="genesis" className="py-32 bg-slate-950 text-white relative">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-start">
+          <div className="lg:col-span-5 space-y-8 sticky top-32">
+            <div className="inline-block p-4 bg-emerald-500/10 rounded-[2rem] text-emerald-400 mb-4">
+              <History size={40} />
+            </div>
+            <h2 className="text-5xl font-black leading-none">La Génesis <br/><span className="text-emerald-400">del Proyecto</span></h2>
+            <p className="text-xl text-slate-400 font-light leading-relaxed italic">
+              "A continuación, presentamos la visión original tal cual como fue planteada en su fase conceptual, el 'brief' visionario que dio vida a Bio-Conecta."
+            </p>
+            <div className="p-8 bg-white/5 rounded-3xl border border-white/10">
+              <h4 className="font-bold text-emerald-400 mb-4 flex items-center gap-2">
+                <MessageSquare size={18} /> Lo que enviamos a la IA:
+              </h4>
+              <p className="text-slate-300 text-sm leading-relaxed italic">
+                Pronto original: "Actúa como experto en emprendimiento de impacto en donde vas a evaluar la viabilidad de un negocio social..."
+              </p>
+            </div>
+          </div>
+          
+          <div className="lg:col-span-7">
+            <div className="bg-slate-900 rounded-[3rem] p-10 lg:p-16 border border-white/5 shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-emerald-500 to-blue-500"></div>
+              
+              <div className="space-y-12 relative z-10">
+                {/* Bloque Problema */}
+                <div className="space-y-4">
+                  <span className="text-xs font-black text-rose-500 uppercase tracking-widest">El Problema Identificado</span>
+                  <p className="text-2xl text-slate-200 font-medium">
+                    "En el Chocó hay un alto índice de pobreza que tiene altos impactos ambientales, sociales y económicos. Hay falta de estructura económica y se realizan actividades de tráfico de minerales que afectan el ecosistema."
+                  </p>
+                </div>
+
+                {/* Bloque Idea */}
+                <div className="space-y-4">
+                  <span className="text-xs font-black text-blue-400 uppercase tracking-widest">La Idea Original</span>
+                  <p className="text-2xl text-slate-200 font-medium">
+                    "Crear un canal interoceánico que contrate a esta población y a personas de todo el país para volverse el principal punto de comercio del continente americano con las otras regiones, porque puede ser menos costoso que el tráfico por Panamá."
+                  </p>
+                </div>
+
+                {/* Bloque Público */}
+                <div className="space-y-4">
+                  <span className="text-xs font-black text-emerald-400 uppercase tracking-widest">Público Objetivo</span>
+                  <p className="text-2xl text-slate-200 font-medium">
+                    "Personas que viven en el Chocó y no pueden tener una buena calidad de vida por la marginación, bajo nivel educativo y pocos encadenamientos productivos."
+                  </p>
+                </div>
+              </div>
+
+              {/* Marca de agua / decoración */}
+              <div className="absolute bottom-[-10%] right-[-10%] opacity-[0.03] text-white">
+                <FileText size={500} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- REFORMULACIÓN DEL EXPERTO (Análisis Crítico) --- */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-slate-50 rounded-[4rem] p-12 lg:p-20 border border-slate-100 relative overflow-hidden">
+            <div className="max-w-3xl relative z-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center">
+                  <Cpu />
+                </div>
+                <h2 className="text-4xl font-black">Enfoque Crítico y Reformulación</h2>
+              </div>
+              <p className="text-2xl text-slate-600 mb-12 font-light leading-relaxed">
+                Como expertos, evaluamos la viabilidad y hemos reformulado la propuesta para fortalecer su impacto. El "Canal Tradicional" evoluciona a un <strong>Sistema Logístico Bioceánico Sostenible</strong>.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-rose-50 p-8 rounded-3xl border border-rose-100">
+                  <h4 className="text-rose-700 font-black text-lg mb-4 uppercase tracking-wider flex items-center gap-2">
+                    <AlertTriangle size={20} /> Riesgos del Canal Clásico
+                  </h4>
+                  <ul className="space-y-3 text-rose-800 text-sm font-medium">
+                    <li>• Inversión extrema (USD 30-50 mil millones)</li>
+                    <li>• Alto impacto en biodiversidad</li>
+                    <li>• Complejidad geopolítica extrema</li>
+                  </ul>
+                </div>
+                <div className="bg-emerald-50 p-8 rounded-3xl border border-emerald-100">
+                  <h4 className="text-emerald-700 font-black text-lg mb-4 uppercase tracking-wider flex items-center gap-2">
+                    <CheckCircle2 size={20} /> Nuestra Evolución Viable
+                  </h4>
+                  <ul className="space-y-3 text-emerald-800 text-sm font-medium">
+                    <li>• Modelo híbrido: Infraestructura + Desarrollo</li>
+                    <li>• Integración regional escalable por fases</li>
+                    <li>• Enfoque de restauración ambiental activa</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- PROPÓSITO MEJORADO --- */}
+      <section id="proposito" className="py-32 bg-white border-y border-slate-100">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <span className="text-xs font-black uppercase tracking-[0.4em] text-emerald-600 mb-6 block">Propósito Fortalecido</span>
+          <h2 className="text-4xl lg:text-6xl font-black text-slate-900 leading-tight mb-12">
+            "Transformar estructuralmente la economía del Chocó mediante logística <span className="text-blue-600">sostenible</span> y empleo <span className="text-emerald-600">digno</span>."
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-6">
+              <div className="text-3xl font-black text-slate-900 mb-2">Transición</div>
+              <p className="text-sm text-slate-500">De economías extractivas ilegales a flujos productivos legales.</p>
+            </div>
+            <div className="p-6">
+              <div className="text-3xl font-black text-slate-900 mb-2">Restauración</div>
+              <p className="text-sm text-slate-500">Recuperación activa de cuencas y ecosistemas biodiversos.</p>
+            </div>
+            <div className="p-6">
+              <div className="text-3xl font-black text-slate-900 mb-2">Soberanía</div>
+              <p className="text-sm text-slate-500">Fortalecimiento de la presencia institucional y gobernanza.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- MODELO DE NEGOCIO EN CAPAS --- */}
+      <section id="modelo" className="py-32 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl font-black mb-6 tracking-tighter">Modelo de Negocio (3 Capas)</h2>
+            <p className="text-xl text-slate-500">Una hoja de ruta escalable diseñada para la realidad del territorio.</p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* Capa 1 */}
+            <div className="bg-white p-12 rounded-[3rem] shadow-sm border border-slate-100 hover:shadow-2xl transition-all duration-500 group">
+              <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                <Droplets size={40} />
+              </div>
+              <div className="space-y-6">
+                <span className="text-xs font-black text-emerald-600 uppercase tracking-widest">Capa 01: Negocio Base</span>
+                <h4 className="text-3xl font-bold">Plataforma Logística Fluvial</h4>
+                <p className="text-slate-500 leading-relaxed">
+                  Modernización del control de ríos estratégicos (Atrato). Transporte legal de madera certificada, cacao y minerales trazables. Empleo directo de ex-mineros.
+                </p>
+                <div className="pt-6 border-t border-slate-50">
+                  <span className="text-[10px] font-black uppercase text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full">Alta Viabilidad Inmediata</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Capa 2 */}
+            <div className="bg-white p-12 rounded-[3rem] shadow-sm border border-slate-100 hover:shadow-2xl transition-all duration-500 group">
+              <div className="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                <HardHat size={40} />
+              </div>
+              <div className="space-y-6">
+                <span className="text-xs font-black text-blue-600 uppercase tracking-widest">Capa 02: Territorio</span>
+                <h4 className="text-3xl font-bold">Encadenamientos Productivos</h4>
+                <p className="text-slate-500 leading-relaxed">
+                  Formación técnica, cooperativas de transporte y servicios ambientales. Compras públicas y privadas con enfoque local para potenciar la economía.
+                </p>
+                <div className="pt-6 border-t border-slate-50">
+                  <span className="text-[10px] font-black uppercase text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full">Generación de Impacto Social</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Capa 3 */}
+            <div className="bg-slate-900 p-12 rounded-[3rem] shadow-xl text-white hover:scale-[1.02] transition-all duration-500 group">
+              <div className="w-20 h-20 bg-white/10 text-emerald-400 rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                <Globe size={40} />
+              </div>
+              <div className="space-y-6">
+                <span className="text-xs font-black text-emerald-400 uppercase tracking-widest">Capa 03: Visión Estratégica</span>
+                <h4 className="text-3xl font-bold">Corredor Multimodal Inteligente</h4>
+                <p className="text-slate-400 leading-relaxed">
+                  Integración de Ríos + Tren Liviano + Puertos Verdes. Menor excavación, menor impacto, mayor competitividad frente a rutas tradicionales.
+                </p>
+                <div className="pt-6 border-t border-white/10">
+                  <span className="text-[10px] font-black uppercase text-white/50 border border-white/20 px-3 py-1.5 rounded-full">Visión a Largo Plazo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- PROPUESTA DE VALOR POR STAKEHOLDER --- */}
+      <section id="valor" className="py-32 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-5xl font-black mb-6 tracking-tighter">Propuesta de Valor</h2>
+              <p className="text-xl text-slate-500">Un ecosistema de beneficios tangibles para todos los actores involucrados.</p>
+            </div>
+            <div className="flex bg-slate-100 p-1.5 rounded-2xl">
+              {['social', 'ambiental', 'economico', 'institucional'].map((tab) => (
+                <button 
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
+                    activeTab === tab ? 'bg-white shadow-sm text-slate-900' : 'text-slate-400 hover:text-slate-600'
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-12">
+              {activeTab === 'social' && (
+                <div className="space-y-8 animate-in fade-in duration-700">
+                   <h3 className="text-4xl font-bold text-emerald-600">Valor Social</h3>
+                   <div className="space-y-6">
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <CheckCircle2 className="text-emerald-500 shrink-0" />
+                        <p className="font-bold">Empleo formal en zonas históricamente excluidas.</p>
+                      </div>
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <CheckCircle2 className="text-emerald-500 shrink-0" />
+                        <p className="font-bold">Reducción sustancial de economías ilegales.</p>
+                      </div>
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <CheckCircle2 className="text-emerald-500 shrink-0" />
+                        <p className="font-bold">Acceso a formación técnica y movilidad social.</p>
+                      </div>
+                   </div>
+                </div>
+              )}
+              {activeTab === 'ambiental' && (
+                <div className="space-y-8 animate-in fade-in duration-700">
+                   <h3 className="text-4xl font-bold text-blue-600">Valor Ambiental</h3>
+                   <div className="space-y-6">
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <Leaf className="text-blue-500 shrink-0" />
+                        <p className="font-bold">Disminución de minería ilegal en ríos.</p>
+                      </div>
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <Leaf className="text-blue-500 shrink-0" />
+                        <p className="font-bold">Programas masivos de restauración de cuencas.</p>
+                      </div>
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <Leaf className="text-blue-500 shrink-0" />
+                        <p className="font-bold">Transporte logístico con baja huella de carbono.</p>
+                      </div>
+                   </div>
+                </div>
+              )}
+              {activeTab === 'economico' && (
+                <div className="space-y-8 animate-in fade-in duration-700">
+                   <h3 className="text-4xl font-bold text-slate-900">Valor Económico</h3>
+                   <div className="space-y-6">
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <TrendingUp className="text-slate-900 shrink-0" />
+                        <p className="font-bold">Reducción de costos logísticos internos y externos.</p>
+                      </div>
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <TrendingUp className="text-slate-900 shrink-0" />
+                        <p className="font-bold">Atracción de inversión responsable bajo estándares ESG.</p>
+                      </div>
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <TrendingUp className="text-slate-900 shrink-0" />
+                        <p className="font-bold">Potenciación de exportaciones sostenibles regionales.</p>
+                      </div>
+                   </div>
+                </div>
+              )}
+              {activeTab === 'institucional' && (
+                <div className="space-y-8 animate-in fade-in duration-700">
+                   <h3 className="text-4xl font-bold text-emerald-800">Valor Institucional</h3>
+                   <div className="space-y-6">
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <Landmark className="text-emerald-800 shrink-0" />
+                        <p className="font-bold">Presencia efectiva del Estado en zonas marginadas.</p>
+                      </div>
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <Landmark className="text-emerald-800 shrink-0" />
+                        <p className="font-bold">Fortalecimiento de la gobernanza territorial comunal.</p>
+                      </div>
+                      <div className="flex gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <Landmark className="text-emerald-800 shrink-0" />
+                        <p className="font-bold">Cumplimiento de estándares internacionales de sostenibilidad.</p>
+                      </div>
+                   </div>
+                </div>
+              )}
+            </div>
+            
+            <div className="relative">
+              <div className="absolute inset-0 bg-emerald-500/20 blur-[100px] rounded-full"></div>
+              <div className="relative bg-slate-900 p-16 rounded-[4rem] text-white shadow-2xl">
+                 <p className="text-emerald-400 font-black text-sm uppercase tracking-widest mb-4">Métrica de Impacto</p>
+                 <h4 className="text-6xl font-black mb-6 tracking-tighter">8.4<span className="text-slate-500">/10</span></h4>
+                 <p className="text-slate-400 font-medium leading-relaxed">
+                   Índice proyectado de retorno social (SROI) superior al promedio de proyectos de infraestructura en América Latina.
+                 </p>
+                 <div className="mt-12 h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                   <div className="h-full bg-emerald-500 w-[84%]"></div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- RIESGOS (Matriz con honestidad) --- */}
+      <section id="riesgos" className="py-32 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl font-black mb-6 tracking-tighter">Gestión de Riesgos</h2>
+            <p className="text-xl text-slate-500">Un análisis honesto y transparente para asegurar la longevidad del proyecto.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { t: "Ambiental", d: "Daño a ecosistemas biodiversos.", m: "Descarte de canal tradicional por sistema multimodal inteligente." },
+              { t: "Social", d: "Conflictos comunitarios y territoriales.", m: "Consulta previa vinculante y gobernanza local integrada." },
+              { t: "Financiero", d: "Altos costos iniciales de inversión.", m: "Desarrollo modular por fases con alianzas público-privadas." },
+              { t: "Político", d: "Cambios en planes de gobierno estatal.", m: "Establecimiento de marco legal de largo plazo (Políticas de Estado)." }
+            ].map((item, i) => (
+              <div key={i} className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm group hover:border-emerald-500 transition-all">
+                <div className="flex gap-6 items-start">
+                  <div className="w-14 h-14 bg-rose-50 text-rose-500 rounded-2xl flex items-center justify-center shrink-0">
+                    <AlertTriangle />
+                  </div>
+                  <div className="space-y-2">
+                    <h5 className="text-2xl font-black text-slate-900 uppercase tracking-tighter">{item.t}</h5>
+                    <p className="text-slate-400 font-medium">Descripción: <span className="text-slate-700">{item.d}</span></p>
+                    <p className="text-emerald-600 font-black pt-4">Mitigación Estratégica:</p>
+                    <p className="text-slate-900 font-medium leading-relaxed">{item.m}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- PRIMEROS PASOS (Roadmap) --- */}
+      <section className="py-32 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-20">
+             <div className="inline-block p-4 bg-blue-50 text-blue-600 rounded-3xl mb-6">
+               <Compass size={40} />
+             </div>
+             <h2 className="text-5xl font-black tracking-tighter">Primeros Pasos Accionables</h2>
+             <p className="text-slate-500 text-xl mt-4 italic font-light">"El camino hacia la transformación estructural."</p>
+          </div>
+          
+          <div className="relative border-l-4 border-slate-100 ml-6 pl-12 space-y-20">
+            {[
+              { step: "01", title: "Diagnóstico Profundo", desc: "Mapeo detallado de ríos, comunidades, actividades ilegales y legales. Análisis de impacto ambiental base." },
+              { step: "02", title: "Proyecto Piloto (12–24 meses)", desc: "Establecimiento de un corredor fluvial corto. Generación de 100–300 empleos locales y medición de impacto." },
+              { step: "03", title: "Alianzas Estratégicas Clave", desc: "Integración con el Estado, bancos de desarrollo, ONGs ambientales y el sector logístico privado." },
+              { step: "04", title: "Escalamiento Progresivo", desc: "Hacia nuevos corredores integrando la visión multimodal regional e inversión internacional." }
+            ].map((item, i) => (
+              <div key={i} className="relative">
+                <div className="absolute -left-[64px] top-0 w-10 h-10 bg-white border-4 border-emerald-500 rounded-full flex items-center justify-center z-10 shadow-lg shadow-emerald-200">
+                   <CheckCircle2 size={18} className="text-emerald-500" />
+                </div>
+                <div className="space-y-2">
+                  <span className="text-xs font-black text-emerald-600 uppercase tracking-[0.3em]">Paso {item.step}</span>
+                  <h4 className="text-3xl font-black text-slate-900">{item.title}</h4>
+                  <p className="text-xl text-slate-500 leading-relaxed font-light">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- FOOTER / CTA FINAL --- */}
+      <footer className="py-40 bg-slate-950 text-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-blue-500 to-emerald-500"></div>
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <BigLogo className="w-32 h-32 mx-auto mb-16" />
+          <h2 className="text-5xl lg:text-7xl font-black mb-12 tracking-tighter leading-tight">
+             Escribamos una nueva <br/><span className="text-emerald-400">Historia Logística</span>.
+          </h2>
+          <p className="text-2xl text-slate-400 mb-16 max-w-2xl mx-auto font-light leading-relaxed">
+             Buscamos aliados, inversionistas y mentes visionarias para transformar el Chocó en el pulmón logístico del mundo.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button className="bg-emerald-600 text-white px-12 py-6 rounded-[2.5rem] font-black text-xl hover:bg-emerald-500 transition-all shadow-2xl shadow-emerald-900/40">
+              Solicitar Pitch Deck
+            </button>
+            <button className="bg-white/10 border border-white/20 text-white px-12 py-6 rounded-[2.5rem] font-black text-xl hover:bg-white/20 transition-all">
+              Agendar Entrevista
+            </button>
+          </div>
+          
+          <div className="mt-48 pt-16 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 opacity-40">
+             <div className="flex items-center gap-3">
+               <BigLogo className="w-8 h-8" />
+               <span className="font-black text-sm uppercase tracking-widest">Bio-Conecta Chocó</span>
+             </div>
+             <p className="text-[10px] font-black uppercase tracking-[0.3em]">
+               © 2024 Propuesta de Transformación Territorial Estructural
+             </p>
+             <div className="flex gap-8">
+               {['LinkedIn', 'Twitter', 'Invest Hub'].map(link => (
+                 <a key={link} href="#" className="text-[10px] font-black uppercase tracking-widest hover:text-emerald-400 transition-colors">{link}</a>
+               ))}
+             </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  );
+};
+
+export default App;
+
